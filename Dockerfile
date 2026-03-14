@@ -1,0 +1,15 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir openai flask
+
+COPY . .
+
+EXPOSE 8080
+
+CMD ["python", "app.py"]
